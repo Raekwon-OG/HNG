@@ -4,23 +4,20 @@ const weekday = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Sa
 const port = process.env.PORT || 3000;
 
 
-
-const responseObj = {
-    'slack_name':`Demi_Brown`, 
-    'current_day': `${new Date().toLocaleDateString('en-us',{weekday:'long'})}`,
-    'utc_time': `${new Date().toISOString().split('.')[0]}Z`,
-    'track':`backend`,
-    'github_file_url': `https://github.com/Raekwon-OG/track-backend/blob/main/stage1/server.js`,
-    'github_repo_url': `https://github.com/Raekwon-OG/track-backend/`,
-    'status_code': 200
-}
-
 const server =  http.createServer((req,res) => {
     let {query,pathname:path} = url.parse(req.url,true)
     if (path === '/api'){
-        if ((query.slack_name == responseObj.slack_name) && (query.track == responseObj.track)){
+        if ((query.slack_name == 'Demi_Brown') && (query.track == 'backend')){
             res.writeHead(200,{'Content-Type':'application/json'});
-            res.write(JSON.stringify(responseObj))
+            res.write(JSON.stringify({
+                'slack_name':`Demi_Brown`, 
+                'current_day': `${new Date().toLocaleDateString('en-us',{weekday:'long'})}`,
+                'utc_time': `${new Date().toISOString().split('.')[0]}Z`,
+                'track':`backend`,
+                'github_file_url': `https://github.com/Raekwon-OG/track-backend/blob/main/stage1/server.js`,
+                'github_repo_url': `https://github.com/Raekwon-OG/track-backend/`,
+                'status_code': 200
+            }))
         }
         else{
             res.writeHead(200,{'Content-Type':'text/html'});
