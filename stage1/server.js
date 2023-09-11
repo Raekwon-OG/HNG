@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 
 const responseObj = {
     'slack_name':`Demi_Brown`, 
-    'current_day': `${weekday[new Date().getDay()]}`,
+    'current_day': `${new Date().toLocaleDateString('en-us',{weekday:'long'})}`,
     'utc_time': `${new Date().toISOString().split('.')[0]}Z`,
     'track':`backend`,
     'github_file_url': `https://github.com/Raekwon-OG/track-backend/blob/main/stage1/server.js`,
