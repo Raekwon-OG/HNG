@@ -11,7 +11,7 @@ const responseObj = {
     'utc_time': `${new Date().toISOString().split('.')[0]}Z`,
     'track':`backend`,
     'github_file_url': `https://github.com/Raekwon-OG/track-backend/blob/main/stage1/server.js`,
-    'github_repo_url': `https://github.com/Raekwon-OG/track-backend/tree/main/stage1`,
+    'github_repo_url': `https://github.com/Raekwon-OG/track-backend/`,
     'status_code': 200
 }
 
