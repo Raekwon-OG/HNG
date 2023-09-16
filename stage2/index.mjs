@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import records from "./routes/endpoints.js";
+import records from "./routes/endpoints.mjs";
  
 const PORT = process.env.PORT || 5050;
 const app = express();
