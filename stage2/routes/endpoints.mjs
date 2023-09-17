@@ -71,7 +71,7 @@ router.post("/", async (req, res) => {
 
 
   router.delete("/:user_id", async (req, res) => {
-    user_id = Math.abs(Number(req.params.user_id))
+    let user_id = Math.abs(Number(req.params.user_id))
     let query = {"user_id":user_id};
     const collection = db.collection("person");
     let result = await collection.deleteOne(query);
