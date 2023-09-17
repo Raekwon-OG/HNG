@@ -52,8 +52,11 @@ router.post("/", async (req, res) => {
         name: req.body.name
     };
     let collection = await db.collection("person");
-    let result = await collection.replaceOne(query, updates);
-    res.send(result).status(200);
+    let result = await collection.findOne(query)
+    let response = await collection.replaceOne(query, updates);
+
+    if (!result) res.send("User with specified id not found").status(404);
+    else res.send(response).status(200);
 
   })
 
@@ -65,8 +68,11 @@ router.post("/", async (req, res) => {
       }
     };
     let collection = await db.collection("person");
-    let result = await collection.updateOne(query, updates);
-    res.send(result).status(200);
+    let result = await collection.findOne(query)
+    let response = await collection.updateOne(query, updates);
+
+    if (!result) res.send("User with specified id not found").status(404);
+    else res.send(response).status(200);
   });
 
 
