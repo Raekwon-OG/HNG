@@ -46,9 +46,10 @@ router.post("/", async (req, res) => {
   });
 
   router.put("/:user_id", async(req,res) =>{
-    let query = {"user_id":req.params.user_id};
+    let query = {"user_id":Math.abs(Number(req.params.user_id))};
     const updates =  {
-        name: req.body.name,
+        user_id: Math.ceil((Math.random() * 100)),
+        name: req.body.name
     };
     let collection = await db.collection("person");
     let result = await collection.replaceOne(query, updates);
@@ -57,10 +58,10 @@ router.post("/", async (req, res) => {
   })
 
   router.patch("/:user_id", async (req, res) => {
-    const query = { _id: new ObjectId(req.params.user_id) };
+    let query = {"user_id":Math.abs(Number(req.params.user_id))};
     const updates =  {
       $set: {
-        name: req.query.name,
+        name: req.body.name,
       }
     };
     let collection = await db.collection("person");
@@ -70,7 +71,8 @@ router.post("/", async (req, res) => {
 
 
   router.delete("/:user_id", async (req, res) => {
-    const query = {"user_id": req.params.user_id };
+    user_id = Math.abs(Number(req.params.user_id))
+    let query = {"user_id":user_id};
     const collection = db.collection("person");
     let result = await collection.deleteOne(query);
   
