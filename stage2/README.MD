@@ -17,7 +17,7 @@ Make sure the following are installed:
 
 ### Installation
 Note: The database is hosted using MonogDB Atlas. You may test this API [here](https://demisbackend.onrender.com/api "Title")  using postman or insomnia to avoid setting up a new cloud database. If you must run this project locally, you can set up your own Atlas DB (Guide: https://www.youtube.com/watch?v=084rmLU1UgA). 
-After setting up your account and DB through the guide above. Create a .env file in the project home folder <</path/to/cloned/repository/track-backend>>, to pass your atlas db user credentials through environment variables referenced in the <</path/to/cloned/repository/track-backend/stage2/db/conn.mjs>> file.
+After setting up your account and DB through the youtube guide. Create a .env file in the project home folder on your local machine @ <</path/to/cloned/repository/track-backend>>, then, you can pass your atlas db user credentials through environment variables referenced in the <</path/to/cloned/repository/track-backend/stage2/db/conn.mjs>> file.
 1. Open VS Code and launch its integrated terminal
 2. Clone this [repository][rep] by performing a git clone (Paste the command below into the terminal)
 [rep]: https://github.com/Raekwon-OG/track-backend.git .
