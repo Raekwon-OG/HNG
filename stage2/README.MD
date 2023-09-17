@@ -25,9 +25,9 @@ git clone https://github.com/Raekwon-OG/track-backend.git
 ~~~
 3. Navigate to the project folder :
     cd <</path/to/cloned/repository/track-backend/>>
-4. Start the server:
-    On windows: node .\stage2\index.mjs
-    On mac/linux: node ./stage2/index.mjs
+4. Start the server: <br>
+    On windows: ~~~ node .\stage2\index.mjs ~~~<br>
+    On mac/linux: ~~~ node ./stage2/index.mjs ~~~
 
 ## Using the API 
 ### Create a Person
