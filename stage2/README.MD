@@ -30,7 +30,7 @@ git clone https://github.com/Raekwon-OG/track-backend.git
 ~~~ 
 node .\stage2\index.mjs 
 ~~~
-<br>
+-<br>
     On mac/linux: 
 ~~~ 
 node ./stage2/index.mjs 
