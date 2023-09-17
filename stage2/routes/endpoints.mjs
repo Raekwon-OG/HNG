@@ -20,7 +20,7 @@ router.get("", async (req, res) => {
     if (!result) res.send("Not found").status(404);
     else res.send(result).status(200);
   } else {
-    res.send("<h2><center>Welcome !</center></h2> <br> To use this api. Follow the guide here: <a href='https://github.com/Raekwon-OG/track-backend/tree/main/stage2#crud-api-guide'> <b>API README.md</b> </a>")
+    res.send("<h2><center>Welcome !</center></h2> <br> Find out more about this API here: <a href='https://github.com/Raekwon-OG/track-backend/tree/main/stage2#crud-api-guide'> <b>API README.md</b> </a>")
   }
 });
 

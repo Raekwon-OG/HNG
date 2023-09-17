@@ -8,15 +8,16 @@ Make sure the following are installed:
 * Node v16.13.2+
 * NPM 8.1.2+
 * NPM Package Dependencies:
-    *cors: ^2.8.5
-    *dotenv: ^16.3.1
-    *express: ^4.18.2
-    *mongodb: 4.1
+    * cors: ^2.8.5
+    * dotenv: ^16.3.1
+    * express: ^4.18.2
+    * mongodb: 4.1
 * VS Code (Download here https://code.visualstudio.com/download )
 * Postman (Download here https://www.postman.com/downloads/)
 
 ### Installation
-Note: The database is hosted using MonogDB Atlas. To run this project locally, set up your own Atlas DB (Guide: https://www.youtube.com/watch?v=084rmLU1UgA). After setting up your account and DB through the guide above. Create a .env file in the project home folder <</path/to/cloned/repository/track-backend>>, to pass your atlas db user credentials through environment variables referenced in the <</path/to/cloned/repository/track-backend/stage2/db/conn.mjs>> file.
+Note: The database is hosted using MonogDB Atlas. You may test this API [here](https://demisbackend.onrender.com/api "Title")  using postman or insomnia to avoid setting up a new cloud database. If you must run this project locally, you can set up your own Atlas DB (Guide: https://www.youtube.com/watch?v=084rmLU1UgA). 
+After setting up your account and DB through the guide above. Create a .env file in the project home folder <</path/to/cloned/repository/track-backend>>, to pass your atlas db user credentials through environment variables referenced in the <</path/to/cloned/repository/track-backend/stage2/db/conn.mjs>> file.
 1. Open VS Code and launch its integrated terminal
 2. Clone this [repository][rep] by performing a git clone (Paste the command below into the terminal)
 [rep]: https://github.com/Raekwon-OG/track-backend.git .
@@ -36,22 +37,24 @@ Endpoint: localhost:5050/api
 Description: Create a new person with the name specified in the request body.
 
 Request Body: 
-    Type: JSON / raw text [object literal] containing person details 
-    Format: {id: <'value'>, name: <'value'>}
+    Object: JSON object containing person details 
+    Type: id (number), name (string)
+    Format: {"id": <value>, "name": "<value>"}
 
 ### Get a Person
 Method: GET 
 
 Endpoint: localhost:5050/api
 
-Description: Get a person with the specified name or id, or both parameters.
+Description: Get a person with the specified name or id, or using both parameters.
 
 Request Body: 
-    Type: JSON / raw text [object literal] containing person details 
-    Format: {id: <'value'>} or {name: <'value'>} or {id: <'value'>, name: <'value'>}
+    Object: JSON object containing person details
+    Type: id (number), name (string)  
+    Format: {"id": <value>} or {"name": "<value>"} or {"id": <value>, "name": "<value>"}
 
 ### Update a Person
-Method: PUT (Replaces the person record. i.e name and id)
+Method: PUT (Replaces the person record. i.e name and id. A new User ID is generated for you)
 Method: PATCH (Updates the person name)
 
 Endpoint: localhost:5050/api/:user_id
@@ -59,9 +62,9 @@ Endpoint: localhost:5050/api/:user_id
 Description: Updates a person with the specified id
 
 Request Body: 
-    Type: JSON / raw text [object literal] containing person name 
-    Format: {name: <'value'>}
-
+    Object: JSON object containing person name
+    Type: name (string)  
+    Format: {"name": "<value>"}
 ### Delete a Person
 Method: DELETE
 
