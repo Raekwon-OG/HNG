@@ -9,7 +9,7 @@ const router = express.Router();
 // })
 // This section will help you get a single record by id or name
 router.get("", async (req, res) => {
-  const {user_id, name} = req.body
+  let {user_id, name} = req.body
   user_id = Math.abs(Number(user_id))
   let collection = await db.collection("person");
   if (user_id || name) {
@@ -25,7 +25,7 @@ router.get("", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    const {user_id, name} = req.body
+    let {user_id, name} = req.body
     user_id = Math.abs(Number(user_id))
     if (user_id){
       let object_id = new ObjectId(user_id);
@@ -46,9 +46,9 @@ router.post("/", async (req, res) => {
   });
 
   router.put("/:user_id", async(req,res) =>{
-    const query = {"user_id":req.params.user_id};
+    let query = {"user_id":req.params.user_id};
     const updates =  {
-        name: req.query.name,
+        name: req.body.name,
     };
     let collection = await db.collection("person");
     let result = await collection.replaceOne(query, updates);
@@ -70,7 +70,7 @@ router.post("/", async (req, res) => {
 
 
   router.delete("/:user_id", async (req, res) => {
-    const query = { _id: new ObjectId(req.params.user_id) };
+    const query = {"user_id": req.params.user_id };
     const collection = db.collection("person");
     let result = await collection.deleteOne(query);
   
