@@ -7,23 +7,25 @@ const router = express.Router();
 // router.get("/", async (req,res) => {
 //   res.send("Welcome")
 // })
-// This section will help you get a single record by id
+// This section will help you get a single record by id or name
 router.get("", async (req, res) => {
-  let {user_id, name} = req.body
+  const {user_id, name} = req.body
   user_id = Math.abs(Number(user_id))
   let collection = await db.collection("person");
+  if (user_id || name) {
+    collection.createIndex({ "user_id": user_id }, { unique: true })
+    let query = name ? {"name":name}: {"user_id":user_id};
+    let result = await collection.findOne(query)
 
-  collection.createIndex({ "user_id": user_id }, { unique: true })
-  let query = name ? {"name":name}: {"user_id":user_id};
-  let result = await collection.findOne(query)
-
-  if (!result) res.send("Not found").status(404);
-  else res.send(result).status(200);
-
+    if (!result) res.send("Not found").status(404);
+    else res.send(result).status(200);
+  } else {
+    res.send("<h2><center>Welcome !</center></h2> <br> To use this api. Follow the guide here: https://github.com/Raekwon-OG/track-backend/tree/main/stage2#crud-api-guide")
+  }
 });
 
 router.post("/", async (req, res) => {
-    let {user_id, name} = req.body
+    const {user_id, name} = req.body
     user_id = Math.abs(Number(user_id))
     if (user_id){
       let object_id = new ObjectId(user_id);
