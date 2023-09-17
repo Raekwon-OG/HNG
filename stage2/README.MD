@@ -20,7 +20,7 @@ Note: The database is hosted using MonogDB Atlas. You may test this API [here](h
 After setting up your account and DB through the youtube guide. Create a .env file in the project home folder on your local machine @ <</path/to/cloned/repository/track-backend>>, then, you can pass your atlas db user credentials through environment variables referenced in the <</path/to/cloned/repository/track-backend/stage2/db/conn.mjs>> file.
 1. Open VS Code and launch its integrated terminal
 2. Clone this [repository][rep] by performing a git clone (Paste the command below into the terminal)
-[rep]: https://github.com/Raekwon-OG/track-backend.git .
+[rep]: https://github.com/Raekwon-OG/track-backend.git "Title" <br>
     git clone https://github.com/Raekwon-OG/track-backend.git
 3. Navigate to the project folder :
     cd <</path/to/cloned/repository/track-backend/>>
@@ -37,8 +37,8 @@ Endpoint: localhost:5050/api
 Description: Create a new person with the name specified in the request body.
 
 Request Body: 
-    Object: JSON object containing person details 
-    Type: id (number), name (string)
+    Object: JSON object containing person details<br> 
+    Type: id (number), name (string)<br>
     Format: {"id": <value>, "name": "<value>"}
 
 ### Get a Person
@@ -49,8 +49,8 @@ Endpoint: localhost:5050/api
 Description: Get a person with the specified name or id, or using both parameters.
 
 Request Body: 
-    Object: JSON object containing person details
-    Type: id (number), name (string)  
+    Object: JSON object containing person details<br>
+    Type: id (number), name (string) <br>
     Format: {"id": <value>} or {"name": "<value>"} or {"id": <value>, "name": "<value>"}
 
 ### Update a Person
@@ -62,8 +62,8 @@ Endpoint: localhost:5050/api/:user_id
 Description: Updates a person with the specified id
 
 Request Body: 
-    Object: JSON object containing person name
-    Type: name (string)  
+    Object: JSON object containing person name<br>
+    Type: name (string)  <br>
     Format: {"name": "<value>"}
 ### Delete a Person
 Method: DELETE
