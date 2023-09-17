@@ -54,7 +54,7 @@ Request Body:
     Format: {"id": <value>} or {"name": "<value>"} or {"id": <value>, "name": "<value>"}
 
 ### Update a Person
-Method: PUT (Replaces the person record. i.e name and id. A new User ID is generated for you)
+Method: PUT (Replaces the person record. i.e name and id. A new User ID is generated for you)<br>
 Method: PATCH (Updates the person name)
 
 Endpoint: localhost:5050/api/:user_id
