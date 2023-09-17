@@ -9,35 +9,33 @@ const router = express.Router();
 // })
 // This section will help you get a single record by id
 router.get("", async (req, res) => {
-  let {user_id, name} = req.query
+  let {user_id, name} = req.body
   user_id = Math.abs(Number(user_id))
   let collection = await db.collection("person");
-  // if (typeof(name) == 'string' || typeof(user_id) == 'number') {
-  console.log(name, user_id)
-  collection.createIndex({ "user_id": 1 }, { unique: true })
+
+  collection.createIndex({ "user_id": user_id }, { unique: true })
   let query = name ? {"name":name}: {"user_id":user_id};
   let result = await collection.findOne(query)
 
   if (!result) res.send("Not found").status(404);
   else res.send(result).status(200);
-  // } else {
-  //   res.send("Query parameters should be string or numbers. Please try again")
-  // }
+
 });
 
 router.post("/", async (req, res) => {
-    let {user_id, name} = req.query
+    let {user_id, name} = req.body
     user_id = Math.abs(Number(user_id))
     if (user_id){
       let object_id = new ObjectId(user_id);
       let collection = await db.collection("person");
       if (name){
-      let new_record = await collection.insertOne({
-        "_id":object_id, 
-        "user_id":user_id, 
-        "name":name});
+        let new_record = await collection.insertOne({
+          "_id":object_id, 
+          "user_id":user_id, 
+          "name":name});
+      collection.createIndex({ "user_id": user_id }, { unique: true })
       res.send(new_record).status(204);
-      } else{
+      } else {
         res.send("Please provide name of user to be created ")
       }
     } else{
@@ -46,7 +44,7 @@ router.post("/", async (req, res) => {
   });
 
   router.put("/:user_id", async(req,res) =>{
-    const query = { _id: new ObjectId(req.params.user_id) };
+    const query = {"user_id":req.params.user_id};
     const updates =  {
         name: req.query.name,
     };

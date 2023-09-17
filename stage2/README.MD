@@ -1,0 +1,74 @@
+# CRUD API GUIDE
+
+This REST API server uses the modern Ecmascript module (ES Modules) syntax and allows you to perform CRUD (Create, Read, Update, Delete) operations on a person record in a database. This README provides instructions on setting up, running, and using this API.
+
+## Getting Started
+### Prerequisites
+Make sure the following are installed:
+* Node v16.13.2+
+* NPM 8.1.2+
+* NPM Package Dependencies:
+    *cors: ^2.8.5
+    *dotenv: ^16.3.1
+    *express: ^4.18.2
+    *mongodb: 4.1
+* VS Code (Download here https://code.visualstudio.com/download )
+* Postman (Download here https://www.postman.com/downloads/)
+
+### Installation
+Note: The database is hosted using MonogDB Atlas. To run this project locally, set up your own Atlas DB (Guide: https://www.youtube.com/watch?v=084rmLU1UgA). After setting up your account and DB through the guide above. Create a .env file in the project home folder <</path/to/cloned/repository/track-backend>>, to pass your atlas db user credentials through environment variables referenced in the <</path/to/cloned/repository/track-backend/stage2/db/conn.mjs>> file.
+1. Open VS Code and launch its integrated terminal
+2. Clone this [repository][rep] by performing a git clone (Paste the command below into the terminal)
+[rep]: https://github.com/Raekwon-OG/track-backend.git .
+    git clone https://github.com/Raekwon-OG/track-backend.git
+3. Navigate to the project folder :
+    cd <</path/to/cloned/repository/track-backend/>>
+4. Start the server:
+    On windows: node .\stage2\index.mjs
+    On mac/linux: node ./stage2/index.mjs
+
+## Using the API 
+### Create a Person
+Method: PUT 
+
+Endpoint: localhost:5050/api 
+
+Description: Create a new person with the name specified in the request body.
+
+Request Body: 
+    Type: JSON / raw text [object literal] containing person details 
+    Format: {id: <'value'>, name: <'value'>}
+
+### Get a Person
+Method: GET 
+
+Endpoint: localhost:5050/api
+
+Description: Get a person with the specified name or id, or both parameters.
+
+Request Body: 
+    Type: JSON / raw text [object literal] containing person details 
+    Format: {id: <'value'>} or {name: <'value'>} or {id: <'value'>, name: <'value'>}
+
+### Update a Person
+Method: PUT (Replaces the person record. i.e name and id)
+Method: PATCH (Updates the person name)
+
+Endpoint: localhost:5050/api/:user_id
+
+Description: Updates a person with the specified id
+
+Request Body: 
+    Type: JSON / raw text [object literal] containing person name 
+    Format: {name: <'value'>}
+
+### Delete a Person
+Method: DELETE
+
+Endpoint: localhost:5050/api/:user_id 
+
+Description: Deletes a person record with the specified id
+
+
+
+Find details on testing the endpoints in DOCUMENTATION.md
